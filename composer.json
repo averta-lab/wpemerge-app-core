@@ -1,11 +1,16 @@
 {
-  "name": "htmlburger/wpemerge-app-core",
+  "name": "averta/wpemerge-app-core",
   "description": "Core tools for the WP Emerge starter theme and plugin.",
   "type": "library",
   "keywords": [],
   "license": "GPL-2.0-only",
   "homepage": "https://wpemerge.com/",
   "authors": [
+    {
+      "name": "Averta",
+      "homepage": "https://averta.net",
+      "role": "Developer"
+    },
     {
       "name": "Atanas Angelov",
       "email": "hi@atanas.dev",
@@ -20,7 +25,7 @@
     }
   ],
   "require": {
-    "htmlburger/wpemerge": "~0.17.0"
+    "averta/wpemerge": "~0.9.4"
   },
   "autoload": {
     "psr-4": {
