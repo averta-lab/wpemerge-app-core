@@ -223,7 +223,24 @@ class Assets {
 	 * @return void
 	 */
 	public function enqueueScriptModule( $handle, $src, $dependencies = [], $version = null ) {
-		wp_enqueue_script_module( $handle, $src, $dependencies, $version );
+		if ( function_exists('wp_enqueue_script_module') ) {
+            wp_enqueue_script_module( $handle, $src, $dependencies );
+        } else {
+            wp_enqueue_script( $handle, $src, $dependencies, null );
+
+            // Mark it as a module manually
+            add_filter(
+                'script_loader_tag',
+                function ( $tag, $current_handle, $script_src ) use ( $handle ) {
+                    if ( $current_handle === $handle ) {
+                        return '<script type="module" src="' . esc_url( $script_src ) . "\"></script>\n";
+                    }
+                    return $tag;
+                },
+                10,
+                3
+            );
+        }
 	}
 
 	/**
