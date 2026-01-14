@@ -224,9 +224,9 @@ class Assets {
 	 */
 	public function enqueueScriptModule( $handle, $src, $dependencies = [], $version = null ) {
 		if ( function_exists('wp_enqueue_script_module') ) {
-            wp_enqueue_script_module( $handle, $src, $dependencies );
+            wp_enqueue_script_module( $handle, $src, $dependencies, $version );
         } else {
-            wp_enqueue_script( $handle, $src, $dependencies, null );
+            wp_enqueue_script( $handle, $src, $dependencies, $version );
 
             // Mark it as a module manually
             add_filter(
